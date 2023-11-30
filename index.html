@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link  rel="stylesheet" href="style.css">
+    <style>
+      
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <h2 style="color: white">Figle Technology</h2>
+    </div>
+    <div class="sidebar">
+      <ul>
+        <li>
+          <h4 class="create" onclick="createcompany()">Create Company</h4>
+        </li>
+
+        <li>
+          <h4 class="view" onclick="viewcompany()">View Companies</h4>
+        </li>
+      </ul>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <h3 style="color: #888">Create Company</h3>
+        <span class="close">&times;</span>
+        <div style="display: grid" class="maingrid">
+          <input placeholder="First Name" name="firstname" id="lastname" />
+
+          <input placeholder="Last Name" name="lastname" id="lastname" />
+          <input
+            placeholder="Company Name"
+            name="companyname"
+            id="companyname"
+          />
+          <input placeholder="Email" name="email" id="email"/>
+          <input placeholder="City" name="city" id="city"/>
+          <input placeholder="Contact No" name="contact" id="contact" />
+        </div>
+        <button onclick="onSave()"><h3>Save</h3></button>
+      </div>
+    </div>
+    <button id="myBtn2">Open Modal</button>
+
+    <div id="myModal2" class="modal2">
+      <div class="modal-content2">
+        <span class="close2">&times;</span>
+        <h3 class="list" style="color: blue">List of Registered Companies</h3>
+        <ul>
+          <h4><li id="demo1"></li></h4>
+        </ul>
+      </div>
+    </div>
+  
+
+    <script>
+      var modal = document.getElementById("myModal");
+
+      var btn = document.getElementsByClassName("create");
+
+      var span = document.getElementsByClassName("close")[0];
+
+      function createcompany() {
+        modal.style.display = "block";
+      }
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      var modal2 = document.getElementById("myModal2");
+
+      var btn2 = document.getElementById("myBtn2");
+
+      var span2 = document.getElementsByClassName("close2")[0];
+
+      function viewcompany() {
+        modal2.style.display = "block";
+
+        document.getElementById("demo1").innerHTML = companylist;
+      }
+
+      
+      span2.onclick = function () {
+        modal2.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal2) {
+          modal2.style.display = "none";
+        }
+      };
+      let companylist = [];
+      function onSave() {
+        let myCompany = document.getElementById("companyname").value;
+
+        companylist.push(myCompany);
+
+        modal.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
